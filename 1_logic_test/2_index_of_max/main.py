@@ -20,4 +20,11 @@ output = list can not blank
 class Solution:
 
     def find_max_index(self, numbers: list) -> int | str:
-        pass
+        if not numbers:
+            return "list can not blank"
+
+        max_index = 0
+        for index in range(1, len(numbers)):
+            if numbers[index] > numbers[max_index]: #หาเลขที่มากที่สุดใน list โดยเปรียบเทียบค่าของตัวเลขใน list กับค่าที่มากที่สุดที่เจอมาแล้ว
+                max_index = index
+        return max_index

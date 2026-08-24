@@ -1,5 +1,5 @@
 """
-เขียบนโปรแกรมหาจำนวนเลข 0 ที่ออยู่ติดกันหลังสุดของค่า factorial โดยห้ามใช้ function from math
+เขียนโปรแกรมหาจำนวนเลข 0 ที่อยู่ติดกับหลังสุดของค่า factorial โดยห้ามใช้ function from math
 
 [Input]
 number: as an integer
@@ -20,4 +20,12 @@ output = number can not be negative
 class Solution:
 
     def find_tailing_zeroes(self, number: int) -> int | str:
-        pass
+        if number < 0:
+            return "number can not be negative"
+        #ใช้สูตร ⌊n/5⌋ + ⌊n/25⌋ + ⌊n/125⌋ + ... 
+        count = 0
+        power_of_five = 5 
+        while power_of_five <= number: # วนไปเรื่อยๆ ถ้า 5, 25, 125... ยังไม่เกินเลขที่รับมา
+            count += number // power_of_five
+            power_of_five *= 5  # เพื่อวนหารด้วย 5, 25, 125... ไปเรื่อยๆถ้ายังไม่เกินเลขที่รับมา   เพราะนับเลขที่หาร 5 ลงตัวก่อน แล้วนับเพิ่มอีกรอบสำหรับตัวที่หาร 25 ลงตัว แล้วอีกรอบสำหรับ 125 ไปเรื่อยๆ
+        return count
